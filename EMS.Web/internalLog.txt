@@ -1,0 +1,9 @@
+2024-10-01 12:14:30.5149 Info Registered target NLog.Targets.FileTarget(Name=alldata)
+2024-10-01 12:14:30.5361 Info Registered target NLog.Targets.FileTarget(Name=otherFile-web)
+2024-10-01 12:14:30.5477 Warn Error has been raised. Exception: NLog.NLogConfigurationException: Target 'ownFile-web' not found for logging rule: *.
+2024-10-01 12:14:30.5477 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.3.4.2778. Product version: 5.3.4+73d83d3161d31288ca5c554cc50d27b6bed5f28b. GlobalAssemblyCache: False
+2024-10-01 12:14:30.6713 Info Validating config: TargetNames=alldata, otherFile-web, ConfigItems=46, FilePath=D:\CBE\EMS\EMS.Web\bin\Debug\net8.0\nlog.config
+2024-10-01 12:14:30.6810 Warn Unused target detected. Add a rule for this target to the configuration. TargetName: alldata
+2024-10-01 12:14:30.6995 Warn Unused target detected. Add a rule for this target to the configuration. TargetName: otherFile-web
+2024-10-01 12:14:30.7167 Info Configuration initialized.
+2024-10-01 12:14:32.8480 Info Validating config: TargetNames=alldata, otherFile-web, ConfigItems=46, FilePath=D:\CBE\EMS\EMS.Web\bin\Debug\net8.0\nlog.config

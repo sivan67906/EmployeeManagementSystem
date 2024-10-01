@@ -1,0 +1,30 @@
+﻿@model Domain.Viewmodels.CreateRoleViewModel
+
+@{
+    ViewData["Title"] = "Login";
+}
+<div class="col-xl-12">
+    <h5 class="mt-4">Create Role</h5>
+    <hr>
+    <div class="offset-sm-4"></div>
+<div class="auth-content">
+    <div class="card">
+        <div class="card-body text-center">
+              
+            <form method="post" asp-action="CreateRole">
+                <div asp-validation-summary="All" class="text-danger"></div>
+
+            <div class="input-group mb-3">
+                    <input asp-for="RoleName" class="form-control" placeholder="Role Name">
+                    <span asp-validation-for="RoleName" class="text-danger"></span>
+            </div>
+
+                <button type="submit" class="btn btn-primary shadow-2 mb-4">
+                    Create Role
+                </button>
+            </form>
+        </div>
+    </div>
+    </div>
+
+</div>
