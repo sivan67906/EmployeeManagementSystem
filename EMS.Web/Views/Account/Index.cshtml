@@ -13,27 +13,27 @@
     </div>
     <div class="card">
         <div class="card-body text-center">
-              
+
             <div asp-validation-summary="All" class="text-danger"></div>
             <div class="mb-4">
                 <i class="feather icon-unlock auth-icon"></i>
             </div>
             <h3 class="mb-4">Login</h3>
             <form method="post">
-            <div class="input-group mb-3">
-                <input asp-for="Email" class="form-control" placeholder="Email">
+                <div class="input-group mb-3">
+                    <input asp-for="Email" class="form-control" placeholder="Email">
                     <span asp-validation-for="Email" class="text-danger"></span>
-            </div>
-            <div class="input-group mb-4">
-                <input asp-for="Password" class="form-control" placeholder="password">
-                    <span asp-validation-for="Password" class="text-danger"></span>
-            </div>
-           @*  <div class="form-group text-left">
-                <div class="checkbox checkbox-fill d-inline">
-                    <input type="checkbox" name="checkbox-fill-1" id="checkbox-fill-a1" checked="">
-                        <label asp-for="RememberMe" for="checkbox-fill-a1" class="cr"> @Html.DisplayNameFor(m => m.RememberMe)</label>
                 </div>
-            </div> *@
+                <div class="input-group mb-4">
+                    <input asp-for="Password" class="form-control" placeholder="password">
+                    <span asp-validation-for="Password" class="text-danger"></span>
+                </div>
+                @*  <div class="form-group text-left">
+                <div class="checkbox checkbox-fill d-inline">
+                <input type="checkbox" name="checkbox-fill-1" id="checkbox-fill-a1" checked="">
+                <label asp-for="RememberMe" for="checkbox-fill-a1" class="cr"> @Html.DisplayNameFor(m => m.RememberMe)</label>
+                </div>
+                </div> *@
                 <div class="form-group">
                     <div class="">
                         <label asp-for="RememberMe">
@@ -42,21 +42,27 @@
                         </label>
                     </div>
                 </div>
-            <button type="submit" class="btn btn-primary shadow-2 mb-4">Login</button>
+                <button type="submit" class="btn btn-primary shadow-2 mb-4">Login</button>
             </form>
-            <p class="mb-2 text-muted" style="margin-right: 12px;">or Login using </p>
-            @{
+            <p class="mb-2 text-muted">Forgot password? <a asp-for="Account" asp-action="ForgotPassword">Click here</a></p>
+            @* <p class="mb-2 text-muted">Change password? <a asp-for="Account" asp-action="ChangePassword">Click here</a></p> *@
+            <p class="mb-0 text-muted">Don’t have an account? <a asp-for="Account" asp-action="Register">Signup</a></p>
+        </div>
+    </div>
+</div>
+
+@{
     if (Model.ExternalLogins.Count == 0)
     {
         <div>No external logins configured</div>
     }
     else
     {
-        <form asp-action="ExternalLogin">
+        <form method="post" asp-action="ExternalLogin" asp-route-returnUrl="@Model.ReturnUrl">
             <div>
                 @foreach (var provider in Model.ExternalLogins)
                 {
-                                <button type="submit" class="btn btn-primary rounded-circle"
+                    <button type="submit" class="btn btn-primary"
                             name="provider" value="@provider.Name"
                             title="Log in using your @provider.DisplayName account">
                         @provider.DisplayName
@@ -66,10 +72,3 @@
         </form>
     }
 }
-            <p class="mb-2 text-muted">Forgot password? <a asp-for="Account" asp-action="ForgotPassword">Click here</a></p>
-            @* <p class="mb-2 text-muted">Change password? <a asp-for="Account" asp-action="ChangePassword">Click here</a></p> *@
-            <p class="mb-0 text-muted">Don’t have an account? <a asp-for="Account" asp-action="Register">Signup</a></p>
-        </div>
-    </div>
-</div>
-

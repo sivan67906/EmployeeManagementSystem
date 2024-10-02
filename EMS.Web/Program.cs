@@ -1,6 +1,7 @@
 using Application;
 using Application.Services.Implementation;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.EntityFrameworkCore;
 using Persistence.Data;
 using Persistence.Repositories;
@@ -14,7 +15,11 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<EmployeeDbContext>(option =>
 option.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
-
+builder.Services.AddAuthentication().AddGoogle(options =>
+{
+    options.ClientId = "735933830325-pgfsl3peiioovtvrj8eh7uej5ai1knui.apps.googleusercontent.com";
+    options.ClientSecret = "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";
+});
 builder.Services.AddIdentity<IdentityUser, IdentityRole>(options =>
 {
     options.SignIn.RequireConfirmedEmail = true;
@@ -23,7 +28,6 @@ builder.Services.AddIdentity<IdentityUser, IdentityRole>(options =>
 
 builder.Services.AddScoped<IEmployeeService, EmployeeService>();
 builder.Services.AddScoped<IEmployeeRepository, EmployeeRepository>();
-
 var app = builder.Build();
 
 
