@@ -96,10 +96,12 @@ namespace EMS.Web.Controllers
 
                     _logger.Log(LogLevel.Warning, confirmationLink);
 
-                    if (_signInManager.IsSignedIn(User) && User.IsInRole("Admin"))
-                    {
-                        return RedirectToAction("ListUsers", "Administration");
-                    }
+                    //if (_signInManager.IsSignedIn(User) && User.IsInRole("Admin"))
+                    //{
+                    //    return RedirectToAction("ListUsers", "Administration");
+                    //}
+
+                    return View("LoginConfirmation");
                     ViewBag.ErrorTitle = "Registration successful";
                     ViewBag.ErrorMessage = "Before you can Login, please confirm your " +
                             "email, by clicking on the confirmation link we have emailed you";

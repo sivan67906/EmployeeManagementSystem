@@ -23,6 +23,7 @@ builder.Services.AddAuthentication().AddGoogle(options =>
 builder.Services.AddIdentity<IdentityUser, IdentityRole>(options =>
 {
     options.SignIn.RequireConfirmedEmail = true;
+
 }).AddEntityFrameworkStores<EmployeeDbContext>()
   .AddDefaultTokenProviders();
 
